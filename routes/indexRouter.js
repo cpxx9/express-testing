@@ -2,7 +2,9 @@ const { Router } = require('express');
 
 const indexRouter = Router();
 
-indexRouter.get('/', (req, res) => res.send('Main page'));
+indexRouter.get('/', (req, res) =>
+  res.render('index', { message: 'EJS rocks!' }),
+);
 indexRouter.get('/about', (req, res) => res.send('About page'));
 indexRouter
   .route('/contact')
