@@ -4,7 +4,13 @@ const usersController = require('../controllers/usersController');
 const usersRouter = Router();
 
 usersRouter.get('/', usersController.usersListGet);
-usersRouter.get('/create', usersController.usersCreateGet);
-usersRouter.post('/create', usersController.usersCreatePost);
+usersRouter
+  .route('/create')
+  .get(usersController.usersCreateGet)
+  .post(usersController.usersCreatePost);
+usersRouter
+  .route('/:id/update')
+  .get(usersController.usersUpdateGet)
+  .post(usersController.usersUpdatePost);
 
 module.exports = usersRouter;
