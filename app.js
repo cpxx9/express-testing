@@ -13,8 +13,17 @@ app.set('view engine', 'ejs');
 const assetsPath = path.join(__dirname, 'public');
 app.use(express.static(assetsPath));
 
-app.use('/authors', authorRouter);
-app.use('/books', bookRouter);
+// app.use('/authors', authorRouter);
+// app.use('/books', bookRouter);
+const users = ['Rose', 'Cake', 'Biff'];
+const links = [
+  { href: '/', text: 'Home' },
+  { href: '/users', text: 'Users' },
+  { href: '/about', text: 'About' },
+];
+app.get('/users', (req, res) => {
+  res.render('user', { users, links });
+});
 app.use('/', indexRouter);
 app.use((err, req, res, next) => {
   console.error(err);
