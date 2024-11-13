@@ -2,6 +2,7 @@ require('dotenv/config');
 
 const path = require('node:path');
 const express = require('express');
+const usersRouter = require('./routes/usersRouter');
 
 const app = express();
 
@@ -12,7 +13,9 @@ const assetsPath = path.join(__dirname, 'public');
 app.use(express.static(assetsPath));
 app.use(express.urlencoded({ extended: true }));
 
-const PORT = process.env.PORT;
+app.use('/', usersRouter);
+
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`My first Express app - listening on port ${PORT}!`);
 });
