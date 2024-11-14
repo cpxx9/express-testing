@@ -13,5 +13,5 @@ usersRouter
   .get(usersController.usersUpdateGet)
   .post(usersController.usersUpdatePost);
 usersRouter.post('/:id/delete', usersController.usersDeletePost);
-
+usersRouter.get('/search', usersController.usersSearchGet);
 module.exports = usersRouter;
