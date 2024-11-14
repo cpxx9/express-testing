@@ -4,6 +4,10 @@ const usersStorage = require('../storages/usersStorage');
 
 const alphaErr = 'must only contain letters';
 const lengthErr = 'must be between 1 and 10 characters';
+const emailErr = 'must be a valid email address';
+const ageErr = 'You must be between 18 and 20 years old';
+const alphaNumErr = 'Must only contain letters and numbers';
+const bioLengthErr = 'must be no more than 200 characters';
 
 const validateUser = [
   body('firstName')
@@ -18,6 +22,14 @@ const validateUser = [
     .withMessage(`Last name ${alphaErr}`)
     .isLength({ min: 1, max: 10 })
     .withMessage(`Last name ${lengthErr}`),
+  body('email').trim().isEmail().withMessage(`Email ${emailErr}`),
+  body('age').trim().isInt({ min: 18, max: 120 }).withMessage(`Age: ${ageErr}`),
+  body('bio')
+    .trim()
+    .isAlphanumeric()
+    .withMessage(`Bio: ${alphaNumErr}`)
+    .isLength({ max: 200 })
+    .withMessage(`Bio: ${bioLengthErr}`),
 ];
 
 exports.usersListGet = (req, res) => {

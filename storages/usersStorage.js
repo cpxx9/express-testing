@@ -4,9 +4,9 @@ class UsersStorage {
     this.id = 0;
   }
 
-  addUser({ firstName, lastName }) {
+  addUser({ firstName, lastName, email, age, bio }) {
     const { id } = this;
-    this.storage[id] = { id, firstName, lastName };
+    this.storage[id] = { id, firstName, lastName, email, age, bio };
     this.id += 1;
   }
 
@@ -18,8 +18,8 @@ class UsersStorage {
     return this.storage[id];
   }
 
-  updateUser(id, { firstName, lastName }) {
-    this.storage[id] = { id, firstName, lastName };
+  updateUser(id, { firstName, lastName, email, age, bio }) {
+    this.storage[id] = { id, firstName, lastName, email, age, bio };
   }
 
   deleteUser(id) {
