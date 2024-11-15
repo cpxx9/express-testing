@@ -5,4 +5,4 @@ const indexRouter = Router();
 
 indexRouter.get('/', logNames);
 
-module.exports = indexsRouter;
+module.exports = indexRouter;
