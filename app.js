@@ -30,7 +30,7 @@ app.use((err, req, res, next) => {
   res.status(err.statusCode || 500).send(err.message);
 });
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`My first Express app - listening on port ${PORT}!`);
 });
