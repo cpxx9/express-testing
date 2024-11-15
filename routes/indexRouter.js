@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const logNames = require('../controllers/indexController');
+const { logNames } = require('../controllers/indexController');
 
 const indexRouter = Router();
 
