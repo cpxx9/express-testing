@@ -1,9 +1,13 @@
+const { insertUsername } = require('../db/queries');
+
 const newUserGet = (req, res) => {
   res.render('new', { title: 'Create new user' });
 };
 
-const newUserPost = (req, res) => {
-  console.log(`Username to be saved: ${req.body.username}`);
+const newUserPost = async (req, res) => {
+  const { username } = req.body;
+  await insertUsername(username);
+  res.redirect('/');
 };
 
 module.exports = { newUserGet, newUserPost };
