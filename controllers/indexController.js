@@ -1,6 +1,9 @@
-const logNames = (req, res) => {
-  console.log('usernames will be logged here - wip');
-  res.render('index', { title: 'List of Users:' });
+const { getAllUsernames } = require('../db/queries');
+
+const logNames = async (req, res) => {
+  const usernames = await getAllUsernames();
+  console.log('Usernames: ', usernames);
+  res.send(`Usernames: ${usernames.map((user) => user.username).join(', ')}`);
 };
 
 module.exports = { logNames };
