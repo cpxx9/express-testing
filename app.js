@@ -2,6 +2,7 @@ require('dotenv/config');
 
 const path = require('node:path');
 const express = require('express');
+const indexRouter = require('./routes/newRouter');
 
 const app = express();
 
@@ -12,7 +13,7 @@ const assetsPath = path.join(__dirname, 'public');
 app.use(express.static(assetsPath));
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/', (req, res) => {});
+app.use('/', indexRouter);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
