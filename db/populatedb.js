@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-
+require('dotenv/config');
 const { Client } = require('pg');
 const { argv } = require('node:process');
 
@@ -16,7 +16,7 @@ VALUES
   ('Damon');
 `;
 
-const connectionString = String(argv[0]);
+const connectionString = `postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_DATABASE}`;
 
 async function main() {
   console.log('seeding...');

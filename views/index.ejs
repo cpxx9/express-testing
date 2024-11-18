@@ -4,7 +4,15 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Coming soon!</p>
+    <% if (locals.usernames) { %>
+      <ul>
+        <% usernames.forEach(username => { %>
+          <li><%= username.username %></li>
+        <%});%>
+      </ul>
+    <% } else { %>
+      <p>Sorry! No users....</p>
+    <% } %>
     <a href="/new"><button>Create user</button></a>
   </body>
 </html>
