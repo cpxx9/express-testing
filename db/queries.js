@@ -11,7 +11,7 @@ async function insertUsername(username) {
 
 async function findUser(search) {
   const { rows } = await pool.query(
-    'SELLECT * FROM usernames WHERE username ILIKE $1',
+    'SELECT * FROM usernames WHERE username ILIKE $1',
     [`%${search}%`],
   );
 

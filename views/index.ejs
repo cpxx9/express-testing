@@ -4,6 +4,11 @@
   </head>
   <body>
     <h1><%= title %></h1>
+    <form action="/" method="GET">
+      <label for="search">Search for user: </label>
+      <input type="text" name="search" id="search">
+      <button type="submit">Search</button>
+    </form>
     <% if (locals.usernames) { %>
       <ul>
         <% usernames.forEach(username => { %>
