@@ -1,14 +1,23 @@
 <html>
   <head>
-    <title>Homepage</title>
-    <link rel="stylesheet" href="/styles.css">
+    <title><%= title %></title>
   </head>
   <body>
-    <h1>Home</h1>
-    <%- include('navbar', {links}) %>
-    <ul>
-</ul>
-
-    <%- include('footer') %>
+    <h1><%= title %></h1>
+    <form action="/" method="GET">
+      <label for="search">Search for user: </label>
+      <input type="text" name="search" id="search">
+      <button type="submit">Search</button>
+    </form>
+    <% if (locals.usernames) { %>
+      <ul>
+        <% usernames.forEach(username => { %>
+          <li><%= username.username %></li>
+        <%});%>
+      </ul>
+    <% } else { %>
+      <p>Sorry! No users....</p>
+    <% } %>
+    <a href="/new"><button>Create user</button></a>
   </body>
 </html>

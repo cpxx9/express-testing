@@ -1,9 +1,14 @@
-const db = require('../db/queries');
+const { getAllUsernames, findUser } = require('../db/queries');
 
 const logNames = async (req, res) => {
-  const usernames = await db.getAllUsernames();
-  console.log('Usernames: ', usernames);
-  res.send('Usernames: ' + usernames.map((user) => user.username).join(', '));
+  const { search } = req.query;
+  if (!search) {
+    const usernames = await getAllUsernames();
+    res.render('index', { title: 'All users', usernames });
+  } else {
+    const usernames = await findUser(String(search));
+    res.render('index', { title: 'All users', usernames });
+  }
 };
 
 module.exports = { logNames };
