@@ -66,15 +66,16 @@ app.get('/', (req, res) => {
 });
 app.get('/sign-up', (req, res) => res.render('sign-up-form'));
 app.post('/sign-up', async (req, res, next) => {
-  try {
+  bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
+    if (err) {
+      return next(err);
+    }
     await pool.query('INSERT INTO users (username, password) VALUES ($1, $2)', [
       req.body.username,
-      req.body.password,
+      hashedPassword,
     ]);
     res.redirect('/');
-  } catch (err) {
-    return next(err);
-  }
+  });
 });
 app.post(
   '/log-in',
