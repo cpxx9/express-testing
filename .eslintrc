@@ -9,6 +9,7 @@
     "ecmaVersion": "latest"
   },
   "rules": {
-    "no-console": "off"
+    "no-console": "warn",
+    "prefer-const": "warn"
   }
 }
