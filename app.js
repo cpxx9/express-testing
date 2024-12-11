@@ -1,8 +1,8 @@
-import 'dotenv/config';
-import express from 'express';
-import cors from 'cors';
-import { v4 as uuidv4 } from 'uuid';
-import models from './models/index.js';
+require('dotenv/config');
+const express = require('express');
+const cors = require('cors');
+const { v4 } = require('uuid');
+const models = require('./models/index.js');
 
 const app = express();
 
